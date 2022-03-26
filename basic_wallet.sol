@@ -10,5 +10,10 @@ contract BasicWallet {
     }
 
     mapping(address => wallet) Wallets;
+
+    receive() external payable {
+        Wallets[msg.sender].balance += msg.value;
+        Wallets[msg.sender].numPayments += 1;
+    }
 }
 
