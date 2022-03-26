@@ -15,6 +15,10 @@ contract BasicWallet {
         return address(this).balance;
     }
 
+    function getBalance() public view returns(uint) {
+        return Wallets[msg.sender].balance;
+    }
+
     receive() external payable {
         Wallets[msg.sender].balance += msg.value;
         Wallets[msg.sender].numPayments += 1;
